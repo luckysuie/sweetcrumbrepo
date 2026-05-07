@@ -1,0 +1,120 @@
+import type { Product, ProductCategory } from '../types'
+
+const c = (price: string) => Math.round(Number(price) * 100)
+
+export const categories: ProductCategory[] = [
+  'Breads',
+  'Cakes',
+  'Pastries',
+  'Cookies',
+  'Drinks',
+]
+
+export const products: Product[] = [
+  {
+    id: 'croissant-butter',
+    name: 'Butter Croissant',
+    description: 'Flaky, golden layers with real butter. Best warm.',
+    category: 'Pastries',
+    tags: ['flaky', 'classic'],
+    priceCents: c('2.50'),
+    emoji: '🥐',
+    isFeatured: true,
+  },
+  {
+    id: 'pain-au-choc',
+    name: 'Pain au Chocolat',
+    description: 'Dark chocolate batons wrapped in crisp pastry.',
+    category: 'Pastries',
+    tags: ['chocolate'],
+    priceCents: c('2.90'),
+    emoji: '🍫',
+    isFeatured: true,
+  },
+  {
+    id: 'sourdough-loaf',
+    name: 'Sourdough Loaf',
+    description: 'Naturally leavened, tangy crumb, crackly crust.',
+    category: 'Breads',
+    tags: ['artisan', 'daily'],
+    priceCents: c('5.80'),
+    emoji: '🍞',
+    isFeatured: true,
+  },
+  {
+    id: 'brioche-bun',
+    name: 'Brioche Bun (2)',
+    description: 'Soft and rich buns—perfect for sliders or breakfast.',
+    category: 'Breads',
+    tags: ['soft', 'buttery'],
+    priceCents: c('3.60'),
+    emoji: '🥯',
+  },
+  {
+    id: 'red-velvet-slice',
+    name: 'Red Velvet Slice',
+    description: 'Velvety cocoa cake with a light cream cheese frosting.',
+    category: 'Cakes',
+    tags: ['crowd-favorite'],
+    priceCents: c('4.90'),
+    emoji: '🍰',
+    isFeatured: true,
+  },
+  {
+    id: 'carrot-cake-slice',
+    name: 'Carrot Cake Slice',
+    description: 'Spiced carrot cake with walnuts and frosting.',
+    category: 'Cakes',
+    tags: ['spiced', 'nuts'],
+    priceCents: c('4.70'),
+    emoji: '🥕',
+  },
+  {
+    id: 'choc-chip-cookie',
+    name: 'Chocolate Chip Cookie',
+    description: 'Crisp edges, gooey center, plenty of chocolate.',
+    category: 'Cookies',
+    tags: ['gooey'],
+    priceCents: c('1.80'),
+    emoji: '🍪',
+  },
+  {
+    id: 'oat-raisin-cookie',
+    name: 'Oat & Raisin Cookie',
+    description: 'Chewy oats with cinnamon and plump raisins.',
+    category: 'Cookies',
+    tags: ['chewy'],
+    priceCents: c('1.60'),
+    emoji: '🍪',
+  },
+  {
+    id: 'cinnamon-roll',
+    name: 'Cinnamon Roll',
+    description: 'Swirls of cinnamon sugar with vanilla glaze.',
+    category: 'Pastries',
+    tags: ['warm', 'sweet'],
+    priceCents: c('3.40'),
+    emoji: '🌀',
+  },
+  {
+    id: 'latte',
+    name: 'Latte',
+    description: 'Espresso with silky steamed milk.',
+    category: 'Drinks',
+    tags: ['coffee'],
+    priceCents: c('3.20'),
+    emoji: '☕',
+  },
+  {
+    id: 'iced-tea-peach',
+    name: 'Peach Iced Tea',
+    description: 'Refreshing brewed tea with peach notes.',
+    category: 'Drinks',
+    tags: ['cold'],
+    priceCents: c('2.70'),
+    emoji: '🧋',
+  },
+]
+
+export const productsById = new Map(products.map((p) => [p.id, p] as const))
+
