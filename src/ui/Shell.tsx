@@ -1,5 +1,7 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../state/auth'
 import { useCart } from '../state/cart'
+import { Button } from './Button'
 
 function cx(...classes: Array<string | false | undefined | null>) {
   return classes.filter(Boolean).join(' ')
@@ -7,6 +9,8 @@ function cx(...classes: Array<string | false | undefined | null>) {
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const cart = useCart()
+  const auth = useAuth()
+  const navigate = useNavigate()
 
   return (
     <div className="min-h-dvh flex flex-col">
@@ -38,6 +42,26 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 {cart.totalItems}
               </span>
             </NavLink>
+
+            {auth.isAuthed ? (
+              <div className="ml-2 flex items-center gap-2">
+                <span className="hidden sm:inline text-xs font-semibold text-slate-600">
+                  Hi, {auth.user?.name}
+                </span>
+                <Button
+                  variant="ghost"
+                  className="px-3 py-2 text-sm"
+                  onClick={() => {
+                    auth.logout()
+                    navigate('/menu')
+                  }}
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <NavItem to="/login">Login</NavItem>
+            )}
           </nav>
         </div>
       </header>
